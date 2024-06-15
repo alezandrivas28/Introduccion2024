@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolucion de Problema</title>
+</head>
+<body>
+    <h1>Resolución de Problema</h1>
+    <p>Crear un formulario para generar una frase con nuestro nombre y apellido con los años de vida.
+    </p>
+
+    <!-- formulario para capturar datos -->
+    <form action="">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre"><br>
+        <label for="apellido">Apellido:</label>
+        <input type="text" name="apellido" id="apellido"><br>
+        <label for="edad">Año nacimiento:</label>
+        <input type="number" name="anio" id="anio"><br><br>
+        <button onclick="event.preventDefault(); generarFrase()">
+            PROCESAR
+        </button>
+    </form><br><br>
+
+    <!-- Espacio donde se mostrará la frase -->
+    <label for="resultado">Resultado</label>
+    <textarea name="resultado" id="resultado" cols="30" rows="10"></textarea>
+
+    <script>
+        //funcion que genera la frase
+        function generarFrase() {
+
+            //capturar datos del formulario
+            var nombre = document.getElementById("nombre").value;
+            //validamos que el nombre no este vacio
+            if(nombre == "") {
+                nombre = "SIN NOMBRE"
+            }
+            
+            //capturar datos del formulario
+            var apellido = document.getElementById("apellido").value;
+
+            //validamos que el apellido no este vacio
+            if(apellido == "") {
+                apellido = "SIN APELLIDO"
+            }
+
+            //capturar datos del formulario
+            var anio = document.getElementById("anio").value;    
+
+            //escribimos las frases a utilizar
+            frase1 = "Eres un gran Emprendedor, y llegaras muy lejos."
+            frase2 = "Tus objetivos son tan grandes como tus sueños."
+            frase3 = "Nada te puede detener, puedes llegar a donde tu lo decidas."
+            frase4 = "Tu luz tiene que brillar para que todos puedan verla."
+
+            
+            anio_actual = 2022;
+            
+            //seleccionamos al azar un numero de las frases a uzar
+            min =1
+            max = 5
+            nfrase = parseInt(Math.random() * (max - min) + min, 10);
+
+            //selecciona la frase
+            switch (nfrase) {
+                case 1:
+                    frase = frase1;
+                    break;
+                case 2:
+                frase = frase2;
+                    break;
+                case 3:
+                    frase = frase3;
+                    break;
+                case 4:
+                    frase = frase4;
+                    break;
+                default:
+                    frase = "TU PUEDES.";
+                    break;
+            }
+
+            //calculasmos la edad
+            anio_vida = anio_actual - anio;
+
+            //validamos que la edad 
+            if(anio == "") {
+                anio_vida = 0
+            }
+
+            var resultado = document.getElementById("resultado");
+
+            //escribimos la frase en el textarea
+            resultado.value = nombre + ' ' + apellido + ', dejame decirte: ' + frase + ' Y se que con ' + anio_vida + ' años de vida, tendras exito.';
+        }
+    </script>
+</body>
+</html>
